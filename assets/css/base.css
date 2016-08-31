@@ -1,0 +1,88 @@
+html {
+	font-size: 16px;
+	font-family: 'Delius', cursive;
+	color: #333;
+}
+
+a, a:visited, a:link {
+	color: #00D0B5;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #A4FFF3;
+}
+
+h2 {
+	font-size: 1.3em;
+	margin-bottom: 0.5rem;
+	font-weight: 500;
+}
+
+p {
+	line-height: 1.2;
+}
+
+em {
+	color: #FF6A2A;
+}
+
+.ellipsis {
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: pre;
+}
+
+.container {
+	padding-left: 4%;
+	padding-right: 4%;
+}
+
+.main-header {
+	padding-top: 1em;
+	padding-bottom: 1em;
+	border-bottom: 1px solid #dedede;
+}
+
+.logo a {
+	background: url('/assets/images/logo-ld.png') no-repeat;
+	width: 120px;
+	height: 27px;
+	display: block;
+	text-indent: -9999px;
+}
+
+.content {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.main-footer {
+	padding-top: 1em;
+	padding-bottom: 1em;
+	border-top: 1px solid #dedede;
+	text-align: center;
+}
+
+.project-list .item {
+	display: flex;
+	align-items: flex-start;
+	padding-bottom: 1em;
+}
+
+.project-list .item:not(:last-child) {
+	margin-bottom: 1em;
+	border-bottom: 1px dotted #dedede;
+}
+
+.project-list .item img {
+	width: 160px;
+	border: 1px solid #f3f3f3;
+}
+
+.project-list .item .description {
+	flex: 1;
+	min-width: 0;
+	padding-left: 1em;
+}
