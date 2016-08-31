@@ -46,7 +46,7 @@ em {
 }
 
 .logo a {
-	background: url('/assets/images/logo-ld.png') no-repeat;
+	background: url('../images/logo-ld.png') no-repeat;
 	width: 120px;
 	height: 27px;
 	display: block;
