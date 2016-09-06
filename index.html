@@ -5,43 +5,55 @@
 	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
 	<link href='https://fonts.googleapis.com/css?family=Delius' rel='stylesheet'>
 	<link rel='stylesheet' href='assets/css/reset.css'>
-	<link rel='stylesheet' href='assets/css/base.css'> 
+	<link rel='stylesheet' href='assets/css/base.css'>
+
+	<script src='assets/js/vendor/async-define.js'></script>
+	<script src='assets/js/vendor/handlebars-v4.0.5.js' async></script>
+	<script src='assets/js/vendor/ajax.js' async></script>
+	<script src='assets/js/vendor/doc.js' async></script>
+	<script src='assets/js/vendor/events-amd.js' async></script>
+	<script src='assets/js/lib/gists.js' async></script>
+	<script src='assets/js/lib/toast.js' async></script>
+	<script src='assets/js/page/app.js' async></script>
+	<script src='assets/js/page/home.js' async></script>
 </head>
 <body>
 	<header class='main-header container'>
 		<h1 class='logo'><a href='/'>Okiiniri</a></h1>
 	</header>
-	<section class='content container'>
-		<ul class='project-list'>
-			<li class='item'>
-				<img src='https://avatars.githubusercontent.com/u/6270979?v=3'><!-- Avatar URL -->
-				<section class='description'>
-					<h2><a class='ellipsis' href='#'>anonymous/config.json</a></h2>
-					<p>Bootstrap Customizer Config</p>
-				</section>
-			<li class='item'>
-				<img src='https://avatars.githubusercontent.com/u/6270978?v=3'>
-				<section class='description'>
-					<h2><a class='ellipsis' href='#'>anonymous/config.json</a></h2>
-					<p>Bootstrap Customizer Config</p>
-				</section>
-			</li>
-			<li class='item'>
-				<img src='https://avatars.githubusercontent.com/u/6270977?v=3'>
-				<section class='description'>
-					<h2><a class='ellipsis' href='#'>anonymous/config.json</a></h2>
-					<p>Bootstrap Customizer Config</p>
-				</section>
-			</li>
-			<li class='item'>
-				<img src='https://avatars.githubusercontent.com/u/6270976?v=3'>
-				<section class='description'>
-					<h2><a class='ellipsis' href='#'>anonymous/config.json</a></h2>
-					<p>Bootstrap Customizer Config</p>
-				</section>
-			</li>
+	<section class='content container loading' id='app'>
+		<ul class='project-list' id='gists'>
 		</ul>
+		<input type='button' value='load more' id='next'>
 	</section>
-	<footer class='main-footer container'>Made with <em><3</em> by <a href='#'>Erika</a></footer>
+	<footer class='main-footer container'>Made with <em>❤</em> by <a href='https://github.com/erikatakahara' target='_blank'>Erika</a></footer>
+
+	<script id="gists-template" type="text/x-handlebars-template">
+		{{#each gists}}
+			<li class='item' id='{{id}}'>
+				{{#if owner}}
+					<img src='{{owner.avatar_url}}' alt='Avatar of {{owner.login}}' width='160' height='160'>
+				{{else}}
+					<img src='/assets/images/anonymous.png' alt='Avatar of anonymous owner' width='160' height='160'>
+				{{/if}}
+				<section class='description'>
+					<h2>
+						<a class='ellipsis' href='{{html_url}}' target='_blank'>
+							{{#if owner}}
+								{{owner.login}}
+							{{else}}
+								anonymous
+							{{/if}} /
+							{{#each files as |value key|}}
+								{{key}}
+							{{/each}}
+						</a>
+					</h2>
+					<p>{{description}}</p>
+				</section>
+			</li>
+		{{/each}}
+  </div>
+</script>
 </body>
 </html>
