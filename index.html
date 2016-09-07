@@ -64,16 +64,8 @@
   </div>
 </script>
 <script id="gists-details" type="text/x-handlebars-template">
-	<section>
-		<a href='#' class='close'>close</a>
-		<h2></h2>
-		{{#each files}}
-			<details>
-				<summary>{{filename}} - {{language}}</summary>
-				<scri{{!}}pt src="https://gist.github.com/{{this.id}}.js"></scri{{!}}pt>
-			</details>
-		{{/each}}
-	</section>
+	<a href='#' class='close'>close</a>
+	<section class='code'></section>
 </script>
 </body>
 </html>

@@ -84,7 +84,7 @@ input[type="button"]:hover, input[type="submit"]:hover, button:hover {
 	text-indent: -9999px;
 }
 
-.content {
+.content > .container {
 	padding-top: 1em;
 	padding-bottom: 1em;
 }

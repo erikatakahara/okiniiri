@@ -37,6 +37,10 @@ define(['doc', 'Handlebars', 'gists', 'app'], function($, Handlebars, gists) {
 		}, 0);
 		gists.details(e.detail, function(response) {
 			$gistsDetails.html(detailsTemplate(response));
+			gists.formatJs(response, function(formatted) {
+				$gistsDetails.find('.content').html(formatted.code);
+				$gistsDetails.append(formatted.style);
+			});
 
 			$gistsDetails.find('.close').on('click', function(e) {
 				e.preventDefault();
