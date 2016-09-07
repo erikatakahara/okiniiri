@@ -96,6 +96,10 @@ input[type="button"]:hover, input[type="submit"]:hover, button:hover {
 	text-align: center;
 }
 
+.hide {
+	display: none!important;
+}
+
 .toast {
 	position: fixed;
 	color: white;
@@ -141,9 +145,38 @@ input[type="button"]:hover, input[type="submit"]:hover, button:hover {
 	z-index: 2;
 }
 
+#list {
+	position: absolute;
+	right: 100vw;
+	width: 100vw;	
+	top: 0;
+	background-color: #fff;
+	transition: right ease-out 1s;
+	transform: translateZ(0);
+}
+
+#list.visible {
+	right: 0;
+}
+
+#details {
+	position: absolute;
+	left: 100vw;
+	width: 100vw;
+	min-height: calc(100vh - 60px);	
+	top: 0;
+	background-color: #fff;
+	transition: left ease-out 1s;
+	transform: translateZ(0);
+}
+
+#details.visible {
+	left: 0;
+}
+
 .project-list .item {
 	display: flex;
-	align-items: flex-start;
+	align-items: center;
 	padding-bottom: 1em;
 }
 
@@ -153,8 +186,9 @@ input[type="button"]:hover, input[type="submit"]:hover, button:hover {
 }
 
 .project-list .item img {
-	width: 160px;
+	width: 130px;
 	border: 1px solid #f3f3f3;
+	border-radius: 50%;
 }
 
 .project-list .item .description {
