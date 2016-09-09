@@ -9,7 +9,7 @@ define('app', ['doc', 'ajax'], function($, ajax) {
 	});
 
 	return {
-		ajax: function(url, data, successCallback) {
+		ajax: function(url, data, successCallback, errorCallback) {
 			$.broadcast('load');
 			ajax.get(url, data, {
 				success: function(response) {
@@ -27,12 +27,14 @@ define('app', ['doc', 'ajax'], function($, ajax) {
 							message: 'An error ocurred trying to list gists'
 						});
 					}
+					errorCallback && errorCallback();
 				},
 				complete: function() {
 					$.broadcast('finishload');
 				}
 			}, {
-				async: true
+				async: true,
+				cache: true
 			});
 		}
 	}

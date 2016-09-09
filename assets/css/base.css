@@ -47,6 +47,10 @@ input[type="button"]:hover, input[type="submit"]:hover, button:hover {
 	background-color: #FF6A2A;
 }
 
+.okiniiri {
+	float: right;
+}
+
 .ellipsis {
 	display: block;
 	overflow: hidden;
@@ -265,6 +269,14 @@ input[type="button"]:hover, input[type="submit"]:hover, button:hover {
 	overflow: hidden;
 	-webkit-box-orient : vertical;
 	-webkit-line-clamp: 3;
+}
+
+.offline .item {
+	opacity: 0.5;
+}
+
+.offline .cached {
+	opacity: 1;
 }
 
 .avatar {

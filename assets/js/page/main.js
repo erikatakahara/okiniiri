@@ -1,21 +1,29 @@
-define(['doc', 'Handlebars', 'gists', 'app'], function($, Handlebars, gists) {
+define(['doc', 'Handlebars', 'gists', 'app', 'connection'], function($, Handlebars, gists) {
 	var listTemplate = Handlebars.compile($('#gists-list').html()),
 		detailsTemplate = Handlebars.compile($('#gists-details').html()),
 		$gists = $('#list'),
 		$gistsDetails = $('#details'),
 		$next = $('#next');
 
+	$gists.on('gists-clear', function(e) {
+		$gists.find('ul').html('');	
+	});
+
+	$gists.on('gists-render', function(e) {
+		$gists.find('ul').first().insertAdjacentHTML('beforeend', listTemplate({
+			gists: e.detail
+		}));
+		$gists.find('.item').on('click', function(e) {
+			e.preventDefault();
+			$.broadcast('gists-details', $(this).data('id'));			
+		});
+	});
+
 	$gists.on('gists-load', function() {
 		gists.list(function(response) {
 			$gists.find('.item').off('click');
 			if(response.keys()) {
-				$gists.find('ul').first().insertAdjacentHTML('beforeend', listTemplate({
-					gists: response
-				}));
-				$gists.find('.item').on('click', function(e) {
-					e.preventDefault();
-					$.broadcast('gists-details', $(this).data('id'));			
-				});
+				$.broadcast('gists-render', response);
 			} else {
 				$next.removeItem();
 			}
@@ -33,6 +41,9 @@ define(['doc', 'Handlebars', 'gists', 'app'], function($, Handlebars, gists) {
 				e.preventDefault();
 				$.broadcast('gists-details-close');	
 			});
+			$gistsDetails.find('.favorite').on('click', function(e) {
+				gists.favorite($(this).data('id'));
+			});
 		});
 	});
 
@@ -43,6 +54,10 @@ define(['doc', 'Handlebars', 'gists', 'app'], function($, Handlebars, gists) {
 		setTimeout(function() {
 			$gistsDetails.html('');
 		}, 1300);
+	});
+
+	$('.okiniiri').on('click', function() {
+		gists.favorites();
 	});
 
 	$.broadcast('gists-load');

@@ -9,17 +9,21 @@
 
 	<script src='assets/js/vendor/async-define.js'></script>
 	<script src='assets/js/vendor/handlebars-v4.0.5.js' async></script>
+	<script src='assets/js/vendor/idb-keyval-min.js' async></script>
 	<script src='assets/js/vendor/ajax.js' async></script>
 	<script src='assets/js/vendor/doc.js' async></script>
 	<script src='assets/js/vendor/events-amd.js' async></script>
 	<script src='assets/js/lib/gists.js' async></script>
 	<script src='assets/js/lib/toast.js' async></script>
-	<script src='assets/js/page/app.js' async></script>
-	<script src='assets/js/page/home.js' async></script>
+	<script src='assets/js/lib/app.js' async></script>
+	<script src='assets/js/page/main.js' async></script>
+	<script src='assets/js/page/connection.js' async></script>
+</head>
 </head>
 <body>
 	<header class='main-header container'>
-		<h1 class='logo'><a href='/'>Okiiniri</a></h1>
+		<a href='#' class='okiniiri'>Favorites</a>
+		<h1 class='logo'><a href='/okiniiri/'>Okiiniri</a></h1>
 	</header>
 	<section class='content loading' id='app'>
 		<section class='project-list container visible' id='list'>
@@ -91,7 +95,7 @@
 		<menu>
 			<a href='#' class='close'>Back</a>
 			<a href='{{html_url}}' class='external-link' target='_blank'>Link</a>
-			<a href='#' class='favorite'>Favorite</a>
+			<a href='#' class='favorite' data-id='{{id}}'>Favorite</a>
 		</menu>
 		{{#each files}}
 			<details>
