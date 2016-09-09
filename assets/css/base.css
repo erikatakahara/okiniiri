@@ -67,6 +67,12 @@ input[type="button"]:hover, input[type="submit"]:hover, button:hover {
 		padding-left: 0;
 		padding-right: 0;
 	}
+
+	.content {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 600px;
+	}
 }
 
 
@@ -145,34 +151,94 @@ input[type="button"]:hover, input[type="submit"]:hover, button:hover {
 	z-index: 2;
 }
 
-#list {
+#app {
+	height: calc(100vh - 110px);
+	overflow: hidden;
+}
+
+#list, #details  {
 	position: absolute;
-	right: 100vw;
 	width: 100vw;	
-	top: 0;
+	height: 100%;
+	overflow: auto;
 	background-color: #fff;
-	transition: right ease-out 1s;
-	transform: translateZ(0);
+	transition: transform ease-out 1s;
+}
+
+#list {
+	transform: translateX(-100vw);
 }
 
 #list.visible {
-	right: 0;
+	transform: translateX(0);
 }
 
 #details {
-	position: absolute;
-	left: 100vw;
-	width: 100vw;
-	min-height: calc(100vh - 60px);	
-	top: 0;
-	background-color: #fff;
-	transition: left ease-out 1s;
-	transform: translateZ(0);
+	transform: translateX(100vw);
 }
 
 #details.visible {
-	left: 0;
+	transform: translateX(0);
 }
+
+.project-details summary {
+	margin-bottom: 1em;
+	margin-top: 1em;
+}
+
+.project-details code {
+	font-family: monospace;
+	padding: 1em;
+	background-color: #ececec;
+	display: block;
+	white-space: pre;
+	overflow: auto;
+	margin-top: 1em;
+}
+
+.project-details header {
+	padding-bottom: 0.5em;
+}
+
+.project-details header h2 {
+	color: #FF6A2A;
+}
+
+.project-details header .avatar {
+	float: left;
+	margin-right: 1em;
+}
+
+.project-details menu {
+	display: flex;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.project-details menu a {
+	display: inline-block;
+	border-radius: 3px;
+	padding: 0.8em;
+	margin-right: 0.5em;
+	flex: 1;
+	text-align: center;
+}
+
+.project-details menu .close {
+	color: #a5a5a5;
+	border: 1px solid #a5a5a5;
+}
+
+.project-details menu .external-link {
+	color: #00D0B5;
+	border: 1px solid #00D0B5;
+}
+
+.project-details menu .favorite {
+	color: #FF6A2A;
+	border: 1px solid #FF6A2A;
+}
+
 
 .project-list .item {
 	display: flex;
@@ -185,11 +251,6 @@ input[type="button"]:hover, input[type="submit"]:hover, button:hover {
 	border-bottom: 1px dotted #dedede;
 }
 
-.project-list .item img {
-	width: 130px;
-	border: 1px solid #f3f3f3;
-	border-radius: 50%;
-}
 
 .project-list .item .description {
 	flex: 1;
@@ -204,4 +265,10 @@ input[type="button"]:hover, input[type="submit"]:hover, button:hover {
 	overflow: hidden;
 	-webkit-box-orient : vertical;
 	-webkit-line-clamp: 3;
+}
+
+.avatar {
+	border: 1px solid #f3f3f3;
+	border-radius: 50%;
+	vertical-align: middle;
 }

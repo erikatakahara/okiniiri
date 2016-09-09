@@ -26,7 +26,7 @@
 			<ul></ul>
 			<input type='button' value='load more' id='next'>
 		</section>
-		<section class='project-details container hide' id='details'></section>
+		<section class='project-details container' id='details'></section>
 	</section>
 	<footer class='main-footer container'>Made with <em>❤</em> by <a href='https://github.com/erikatakahara' target='_blank'>Erika</a></footer>
 
@@ -34,9 +34,9 @@
 		{{#each gists}}
 			<li class='item' data-id='{{id}}'>
 				{{#if owner}}
-					<img src='{{owner.avatar_url}}' alt='Avatar of {{owner.login}}' width='130' height='130'>
+					<img src='{{owner.avatar_url}}' class='avatar' alt='Avatar of {{owner.login}}' width='130' height='130'>
 				{{else}}
-					<img src='assets/images/anonymous.png' alt='Avatar of anonymous owner' width='130' height='130'>
+					<img src='assets/images/anonymous.png' class='avatar' alt='Avatar of anonymous owner' width='130' height='130'>
 				{{/if}}
 				<section class='description'>
 					<h2>
@@ -52,7 +52,7 @@
 						</a>
 					</h2>
 					<p>
-						{{#if owner}}
+						{{#if description}}
 							{{description}}
 						{{else}}
 							No description
@@ -64,8 +64,42 @@
   </div>
 </script>
 <script id="gists-details" type="text/x-handlebars-template">
-	<a href='#' class='close'>close</a>
-	<section class='code'></section>
+	<section>
+		<header>
+			{{#if owner}}
+				<img src='{{owner.avatar_url}}' class='avatar' alt='Avatar of {{owner.login}}' width='50' height='50'>
+			{{else}}
+				<img src='assets/images/anonymous.png' class='avatar' alt='Avatar of anonymous owner' width='50' height='50'>
+			{{/if}}
+			<h2 class='ellipsis'>
+				{{#if owner}}
+					<a href='{{owner.html_url}}' target='_blank'>
+						{{owner.login}}
+					</a>
+				{{else}}
+					anonymous
+				{{/if}}
+			</h2>
+			<p class='ellipsis'>
+				{{#if description}}
+					{{description}}
+				{{else}}
+					No description
+				{{/if}}
+			</p>
+		</header>
+		<menu>
+			<a href='#' class='close'>Back</a>
+			<a href='{{html_url}}' class='external-link' target='_blank'>Link</a>
+			<a href='#' class='favorite'>Favorite</a>
+		</menu>
+		{{#each files}}
+			<details>
+				<summary>{{filename}} - {{language}}</summary>
+				<code>{{content}}</code>
+			</details>
+		{{/each}}
+	</section>
 </script>
 </body>
 </html>
