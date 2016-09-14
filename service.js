@@ -1,3 +1,5 @@
+importScripts('assets/js/vendor/idb-keyval-min.js');
+
 const CACHE_VERSION = 'v1';
 
 var URLS_TO_CACHE = [
@@ -28,7 +30,8 @@ self.addEventListener('install', function(e) {
 });
 
 self.addEventListener('fetch', function(e) {
-	if(e.request.url.indexOf('githubusercontent.com') != -1 || e.request.url.indexOf('api.github.com/gists/public') != -1) {
+	let url = e.request.url;
+	if(url.indexOf('githubusercontent.com') != -1 || url.indexOf('api.github.com/gists') != -1) {
 		e.respondWith(fetch(e.request)
 			.then(response => {
 				return caches.open(CACHE_VERSION).then(cache => {

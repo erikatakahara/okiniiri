@@ -50,10 +50,6 @@ define(['doc', 'Handlebars', 'gists', 'app', 'connection'], function($, Handleba
 	$gists.on('gists-details-close', function(e) {
 		$gists.addClass('visible');
 		$gistsDetails.removeClass('visible');
-
-		setTimeout(function() {
-			$gistsDetails.html('');
-		}, 1300);
 	});
 
 	$('.okiniiri').on('click', function() {
