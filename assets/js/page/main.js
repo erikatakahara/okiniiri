@@ -53,7 +53,9 @@ define(['doc', 'Handlebars', 'gists', 'app', 'connection'], function($, Handleba
 	});
 
 	$('.okiniiri').on('click', function() {
+		$.broadcast('gists-details-close');
 		gists.favorites();
+		$next.addClass('hide');
 	});
 
 	$.broadcast('gists-load');
